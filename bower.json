@@ -1,0 +1,11 @@
+{
+  "name": "Mini Angular App",
+  "description": "Landing Page",
+  "version": "0.0.0.1",
+  "homepage": "www.somospuravida.com",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.x",
+  }
+}

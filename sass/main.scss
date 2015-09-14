@@ -1,0 +1,48 @@
+@mixin linear-gradient($fromColor, $toColor) {
+  background-color: $toColor; /* Fallback Color */
+  background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, $fromColor, $toColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(top, $fromColor, $toColor); /* FF3.6 */
+  background-image: -ms-linear-gradient(top, $fromColor, $toColor); /* IE10 */
+  background-image: -o-linear-gradient(top, $fromColor, $toColor); /* Opera 11.10+ */
+  background-image: linear-gradient(top, $fromColor, $toColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='$fromColor', EndColorStr='$toColor');
+}
+
+@mixin breakpoint($point) {
+  @if $point == laptop {
+    @media (min-width: 992px) {
+      @content;
+    }
+  }
+  @if $point == retina {
+    @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+      @content;
+    }
+  }
+}
+
+.grid-1-4 {
+  width: 100%;
+  @include breakpoint(laptop) {
+    width: 25%;
+  }
+  float: left;
+}
+
+.red-theme {
+  background-color: red;
+}
+
+.container {
+  .section {
+    @include linear-gradient(#BADA55, #FADADE);
+    img {
+      width: 100%;
+      @include breakpoint(retina) {
+        content: url("http://dsx.weather.com/util/image/w/68a62f4e-122e-4c72-91b2-ec9f5024e031.jpg?api=7db9fe61-7414-47b5-9871-e17d87b8b6a0&h=598&w=640&v=at");
+      }
+    }
+  }
+}
+
